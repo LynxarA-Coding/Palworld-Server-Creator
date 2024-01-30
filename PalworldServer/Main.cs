@@ -1,15 +1,8 @@
 ﻿using Bunifu.UI.WinForms.Extensions;
 using PalworldServer.Properties;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PalworldServer
@@ -21,7 +14,17 @@ namespace PalworldServer
             InitializeComponent();
         }
 
-        private bool CheckServerStatus()
+        // Button Handlers
+        private void brnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.Minimize();
+        }
+
+        private bool GetServerStatus()
         {
             // Checking if server exists
             string path = tbFolder.Text;
@@ -36,35 +39,6 @@ namespace PalworldServer
             }
         }
 
-        private async void StatusCheck (Process process)
-        {
-            // Checking if server is running
-            await Task.Delay(1000);
-            if (process.HasExited)
-            {
-                LogConsole("Server Stopped");
-                btnStart.Enabled = true;
-                btnInstall.Enabled = false;
-                lblStatus.Text = "Server Status: Installed and Ready";
-            }
-            else
-            {
-                LogConsole("Server is Running");
-                btnStart.Enabled = false;
-                btnInstall.Enabled = false;
-                lblStatus.Text = "Server Status: Running";
-            }
-        }
-
-        private void brnClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-        private void btnMinimize_Click(object sender, EventArgs e)
-        {
-            this.Minimize();
-        }
-
         private void Main_Load(object sender, EventArgs e)
         {
             // Setting Current Fodler as Working Directory or Settings Folder
@@ -76,7 +50,7 @@ namespace PalworldServer
             tbFolder.Text = path;
 
             // Checking if server exists
-            if (CheckServerStatus())
+            if (GetServerStatus())
             {
                 btnInstall.Enabled = false;
                 btnStart.Enabled = true;
@@ -117,6 +91,7 @@ namespace PalworldServer
             lblStatus.Text = "Server Status: Running";
         }
 
+        // Console logger for server installation output
         private async void LogConsole(string text)
         {
             if (tbLogs.InvokeRequired)
@@ -144,11 +119,12 @@ namespace PalworldServer
 
         private void ServerInstalled(Process process)
         {
+            // Stop reading output on exit
             process.CancelOutputRead();
             LogConsole("Server Installation Complete");
 
             // Last Check
-            if (CheckServerStatus())
+            if (GetServerStatus())
             {
                 UpdateUI(() =>
                 {
@@ -217,6 +193,7 @@ namespace PalworldServer
             string steamPath = path + "/SteamCMD";
             string serverPath = path + "/PalworldServer";
 
+            // Run SteamCMD + install Palworld Server
             Process process = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = steamPath + "/steamcmd.exe";
@@ -247,8 +224,8 @@ namespace PalworldServer
                 LogConsole("Folder Selected: " + fbd.SelectedPath);
             }
 
-            btnStart.Enabled = CheckServerStatus();
-            btnInstall.Enabled = !CheckServerStatus();
+            btnStart.Enabled = GetServerStatus();
+            btnInstall.Enabled = !GetServerStatus();
 
             if (btnInstall.Enabled)
             {
@@ -259,6 +236,7 @@ namespace PalworldServer
                 lblStatus.Text = "Server Status: Not Installed";
             }
 
+            // Save Settings (apply new folder)
             Settings.Default["ServerFolder"] = tbFolder.Text;
             Settings.Default.Save();
         }

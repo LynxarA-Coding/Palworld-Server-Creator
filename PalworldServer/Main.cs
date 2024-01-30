@@ -52,12 +52,14 @@ namespace PalworldServer
             // Checking if server exists
             if (GetServerStatus())
             {
-                btnInstall.Enabled = false;
+                btnInstall.Text = "Update Server";
+                btnInstall.Enabled = true;
                 btnStart.Enabled = true;
                 lblStatus.Text = "Server Status: Installed and Ready";
             }
             else
             {
+                btnInstall.Text = "Install Server";
                 btnInstall.Enabled = true;
                 btnStart.Enabled = false;
                 lblStatus.Text = "Server Status: Not Installed";
@@ -121,14 +123,33 @@ namespace PalworldServer
         {
             // Stop reading output on exit
             process.CancelOutputRead();
-            LogConsole("Server Installation Complete");
+
+            if (btnInstall.Text != "Update Server")
+            {
+                // Copy Config
+                string path = tbFolder.Text;
+                string serverPath = path + "/PalworldServer";
+                string configPath = serverPath + "/Pal/Saved/Config/WindowsServer";
+                Directory.CreateDirectory(configPath);
+                File.Copy(serverPath + "/DefaultPalWorldSettings.ini", configPath + "/PalWorldSettings.ini", true);
+                LogConsole("Config Copied");
+
+                // Open Config
+                Process.Start(configPath + "/PalWorldSettings.ini");
+                LogConsole("Server Installation Complete");
+            }
+            else
+            {
+                LogConsole("Server Update Complete");
+            }
 
             // Last Check
             if (GetServerStatus())
             {
                 UpdateUI(() =>
                 {
-                    btnInstall.Enabled = false;
+                    btnInstall.Text = "Update Server";
+                    btnInstall.Enabled = true;
                     btnStart.Enabled = true;
                     lblStatus.Text = "Server Status: Installed and Ready";
                 });
@@ -137,22 +158,12 @@ namespace PalworldServer
             {
                 UpdateUI(() =>
                 {
+                    btnInstall.Text = "Install Server";
                     btnInstall.Enabled = true;
                     btnStart.Enabled = false;
                     lblStatus.Text = "Server Status: Not Installed";
                 });
             }
-
-            // Copy Config
-            string path = tbFolder.Text;
-            string serverPath = path + "/PalworldServer";
-            string configPath = serverPath + "/Pal/Saved/Config/WindowsServer";
-            Directory.CreateDirectory(configPath);
-            File.Copy(serverPath + "/DefaultPalWorldSettings.ini", configPath + "/PalWorldSettings.ini", true);
-            LogConsole("Config Copied");
-
-            // Open Config
-            Process.Start(configPath + "/PalWorldSettings.ini");
         }
 
         private void btnInstall_Click(object sender, EventArgs e)
@@ -225,14 +236,16 @@ namespace PalworldServer
             }
 
             btnStart.Enabled = GetServerStatus();
-            btnInstall.Enabled = !GetServerStatus();
+            btnInstall.Enabled = GetServerStatus();
 
             if (btnInstall.Enabled)
             {
+                btnInstall.Text = "Update Server";
                 lblStatus.Text = "Server Status: Installed and Ready";
             }
             else
             {
+                btnInstall.Text = "Install Server";
                 lblStatus.Text = "Server Status: Not Installed";
             }
 

@@ -16,11 +16,15 @@
 SteamCMD is a command-line tool developed by Valve (those who made Steam) that allows users to install and update various apps, including game servers like Palworld. The Palworld Server Creator App utilizes SteamCMD under the hood to simplify the server setup process.
 
 ## 🛠️ Updates and Maintenance 
+v1.0.0:
 To update the Palworld server, you need to save the `Pal\Saved` folder
 - Save the `Pal\Saved` folder outside the Server
 - Delete full server folder, including SteamCMD
 - Do the Quick Start actions again
 - Put the `Pal\Saved` folder back into the newly created server
+
+v1.1.0:
+To update the Palworld server, you need to select the correct Root folder and click "Update Server"
 
 ## ❓Troubleshooting
 For any issues or questions, check the Issues section.

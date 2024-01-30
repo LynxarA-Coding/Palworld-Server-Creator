@@ -1,5 +1,5 @@
-# Palworld Server App
-🎮 Welcome to the Palworld Server App! This repository provides a simple solution for managing your Palworld server.
+# Palworld Server Creator App
+🎮 Welcome to the Palworld Server Creator! This repository provides a simple solution for managing your Palworld server.
 
 ![img](https://i.imgur.com/XHYB2em.png)
 
@@ -11,6 +11,9 @@
 - Wait until it installs fully
 - Edit the Config the program opens
 - Start the Server
+
+## It installs SteamCMD - What is it? 🛠️
+SteamCMD is a command-line tool developed by Valve (those who made Steam) that allows users to install and update various apps, including game servers like Palworld. The Palworld Server Creator App utilizes SteamCMD under the hood to simplify the server setup process.
 
 ## 🛠️ Updates and Maintenance 
 To update the Palworld server, you need to save the `Pal\Saved` folder

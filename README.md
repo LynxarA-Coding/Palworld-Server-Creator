@@ -28,5 +28,8 @@ For any issues or questions, check the Issues section.
 ## 🌟 Contributions
 Contributions are welcome! Feel free to submit a pull request with your improvements.
 
+## 🚨 Important Note 
+Palworld Server App is NOT an official application or affiliated with Pocketpair. This tool is developed independently to enhance user experience in managing Palworld servers.
+
 ## 📝 License
 This project is licensed under the Apache License Version 2.0 by January 2004

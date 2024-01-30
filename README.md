@@ -1,8 +1,10 @@
 # Palworld Server App
 🎮 Welcome to the Palworld Server App! This repository provides a simple solution for managing your Palworld server.
 
+![img](https://i.imgur.com/XHYB2em.png)
+
 ## 🚀 Quick Start 
-- Download the latest release from the Releases page: [here](https://github.com/LynxarA-Coding/PalworldServerCreator/releases)
+- Download the latest release from the Releases page: [here](https://github.com/LynxarA-Coding/PalworldServerCreator/releases/latest)
 - Run the executable (PalworldServer.exe).
 - Choose the folder to your liking (it will create two folders inside, one for SteamCMD, one for the Server itself)
 - Click "Install Server"

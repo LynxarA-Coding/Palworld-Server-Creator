@@ -3,6 +3,8 @@
 
 ![img](https://i.imgur.com/XHYB2em.png)
 
+*Image is from 1.0.0, not updated due to the UI difference only in the Header (app name + version) text*
+
 ## 🚀 Quick Start 
 - Download the latest release from the Releases page: [here](https://github.com/LynxarA-Coding/PalworldServerCreator/releases/latest)
 - Run the executable (PalworldServer.exe).

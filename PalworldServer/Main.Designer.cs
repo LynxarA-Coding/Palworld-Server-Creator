@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            this.components = new System.ComponentModel.Container();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -40,6 +40,7 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.DragControl = new Bunifu.UI.WinForms.BunifuFormDrag();
             this.pnlHeader = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblHeader = new System.Windows.Forms.Label();
@@ -52,7 +53,10 @@
             this.btnStart = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnSelect = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.tbFolder = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.tooltip = new Bunifu.UI.WinForms.BunifuToolTip(this.components);
+            this.pnlMain = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnlHeader.SuspendLayout();
+            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // DragControl
@@ -97,6 +101,9 @@
             this.pnlHeader.ShowBorders = true;
             this.pnlHeader.Size = new System.Drawing.Size(800, 50);
             this.pnlHeader.TabIndex = 0;
+            this.tooltip.SetToolTip(this.pnlHeader, "");
+            this.tooltip.SetToolTipIcon(this.pnlHeader, null);
+            this.tooltip.SetToolTipTitle(this.pnlHeader, "");
             // 
             // lblHeader
             // 
@@ -106,7 +113,11 @@
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(317, 29);
             this.lblHeader.TabIndex = 1;
-            this.lblHeader.Text = "Palworld Server Creator v1.1.0";
+            this.lblHeader.Text = "Palworld Server Creator v1.1.1";
+            this.tooltip.SetToolTip(this.lblHeader, "Palworld Server Creator\r\n\r\nVersion: 1.1.1\r\nAuthor: LynxarA\r\nDiscord: lynxaradev\r\n" +
+        "Github: LynxarA-Coding/Palworld-Server-Creator");
+            this.tooltip.SetToolTipIcon(this.lblHeader, null);
+            this.tooltip.SetToolTipTitle(this.lblHeader, "Credits");
             // 
             // btnMinimize
             // 
@@ -137,7 +148,10 @@
             this.btnMinimize.ShowSizeMarkers = false;
             this.btnMinimize.Size = new System.Drawing.Size(40, 40);
             this.btnMinimize.TabIndex = 0;
+            this.tooltip.SetToolTip(this.btnMinimize, "");
+            this.tooltip.SetToolTipIcon(this.btnMinimize, null);
             this.btnMinimize.ToolTipText = "";
+            this.tooltip.SetToolTipTitle(this.btnMinimize, "");
             this.btnMinimize.WaitOnLoad = false;
             this.btnMinimize.Zoom = 5;
             this.btnMinimize.ZoomSpeed = 10;
@@ -172,7 +186,10 @@
             this.brnClose.ShowSizeMarkers = false;
             this.brnClose.Size = new System.Drawing.Size(40, 40);
             this.brnClose.TabIndex = 0;
+            this.tooltip.SetToolTip(this.brnClose, "");
+            this.tooltip.SetToolTipIcon(this.brnClose, null);
             this.brnClose.ToolTipText = "";
+            this.tooltip.SetToolTipTitle(this.brnClose, "");
             this.brnClose.WaitOnLoad = false;
             this.brnClose.Zoom = 5;
             this.brnClose.ZoomSpeed = 10;
@@ -181,11 +198,14 @@
             // lblFolderLoc
             // 
             this.lblFolderLoc.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFolderLoc.Location = new System.Drawing.Point(12, 63);
+            this.lblFolderLoc.Location = new System.Drawing.Point(12, 7);
             this.lblFolderLoc.Name = "lblFolderLoc";
             this.lblFolderLoc.Size = new System.Drawing.Size(400, 23);
             this.lblFolderLoc.TabIndex = 3;
             this.lblFolderLoc.Text = "Server Root Folder Location:";
+            this.tooltip.SetToolTip(this.lblFolderLoc, "");
+            this.tooltip.SetToolTipIcon(this.lblFolderLoc, null);
+            this.tooltip.SetToolTipTitle(this.lblFolderLoc, "");
             // 
             // lblStatus
             // 
@@ -194,7 +214,8 @@
             this.lblStatus.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblStatus.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblStatus.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(16, 226);
+            this.lblStatus.ForeColor = System.Drawing.Color.DimGray;
+            this.lblStatus.Location = new System.Drawing.Point(16, 161);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblStatus.Size = new System.Drawing.Size(271, 29);
@@ -202,6 +223,9 @@
             this.lblStatus.Text = "Server Status: Not Installed";
             this.lblStatus.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lblStatus.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.tooltip.SetToolTip(this.lblStatus, "");
+            this.tooltip.SetToolTipIcon(this.lblStatus, null);
+            this.tooltip.SetToolTipTitle(this.lblStatus, "");
             // 
             // tbLogs
             // 
@@ -222,7 +246,7 @@
             this.tbLogs.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
             this.tbLogs.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.tbLogs.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbLogs.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.tbLogs.DefaultFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbLogs.DefaultText = "";
             this.tbLogs.FillColor = System.Drawing.Color.White;
             this.tbLogs.ForeColor = System.Drawing.Color.DimGray;
@@ -233,7 +257,7 @@
             this.tbLogs.IconRight = null;
             this.tbLogs.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.tbLogs.Lines = new string[0];
-            this.tbLogs.Location = new System.Drawing.Point(12, 273);
+            this.tbLogs.Location = new System.Drawing.Point(17, 196);
             this.tbLogs.MaxLength = 32767;
             this.tbLogs.MinimumSize = new System.Drawing.Size(1, 1);
             this.tbLogs.Modified = false;
@@ -269,7 +293,7 @@
             this.tbLogs.SelectionLength = 0;
             this.tbLogs.SelectionStart = 0;
             this.tbLogs.ShortcutsEnabled = true;
-            this.tbLogs.Size = new System.Drawing.Size(776, 165);
+            this.tbLogs.Size = new System.Drawing.Size(771, 165);
             this.tbLogs.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.tbLogs.TabIndex = 5;
             this.tbLogs.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -277,6 +301,9 @@
             this.tbLogs.TextMarginLeft = 3;
             this.tbLogs.TextMarginTop = 1;
             this.tbLogs.TextPlaceholder = "";
+            this.tooltip.SetToolTip(this.tbLogs, "");
+            this.tooltip.SetToolTipIcon(this.tbLogs, null);
+            this.tooltip.SetToolTipTitle(this.tbLogs, "");
             this.tbLogs.UseSystemPasswordChar = false;
             this.tbLogs.WordWrap = true;
             // 
@@ -329,7 +356,7 @@
             this.btnInstall.IdleIconLeftImage = null;
             this.btnInstall.IdleIconRightImage = null;
             this.btnInstall.IndicateFocus = false;
-            this.btnInstall.Location = new System.Drawing.Point(538, 156);
+            this.btnInstall.Location = new System.Drawing.Point(538, 105);
             this.btnInstall.Name = "btnInstall";
             this.btnInstall.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnInstall.OnDisabledState.BorderRadius = 46;
@@ -369,6 +396,9 @@
             this.btnInstall.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnInstall.TextMarginLeft = 0;
             this.btnInstall.TextPadding = new System.Windows.Forms.Padding(0);
+            this.tooltip.SetToolTip(this.btnInstall, "");
+            this.tooltip.SetToolTipIcon(this.btnInstall, null);
+            this.tooltip.SetToolTipTitle(this.btnInstall, "");
             this.btnInstall.UseDefaultRadiusAndThickness = true;
             this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
             // 
@@ -422,7 +452,7 @@
             this.btnStart.IdleIconLeftImage = null;
             this.btnStart.IdleIconRightImage = null;
             this.btnStart.IndicateFocus = false;
-            this.btnStart.Location = new System.Drawing.Point(12, 156);
+            this.btnStart.Location = new System.Drawing.Point(17, 105);
             this.btnStart.Name = "btnStart";
             this.btnStart.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnStart.OnDisabledState.BorderRadius = 46;
@@ -462,6 +492,11 @@
             this.btnStart.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnStart.TextMarginLeft = 0;
             this.btnStart.TextPadding = new System.Windows.Forms.Padding(0);
+            this.tooltip.SetToolTip(this.btnStart, "Press it to Start your server. \r\nAlternatively, you can start the server making a" +
+        " .bat file (create it inside server folder)\r\nCode: PalServer.exe -port=8211 -pla" +
+        "yers=32");
+            this.tooltip.SetToolTipIcon(this.btnStart, null);
+            this.tooltip.SetToolTipTitle(this.btnStart, "Start Server Button");
             this.btnStart.UseDefaultRadiusAndThickness = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
@@ -514,7 +549,7 @@
             this.btnSelect.IdleIconLeftImage = null;
             this.btnSelect.IdleIconRightImage = null;
             this.btnSelect.IndicateFocus = false;
-            this.btnSelect.Location = new System.Drawing.Point(661, 90);
+            this.btnSelect.Location = new System.Drawing.Point(661, 37);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSelect.OnDisabledState.BorderRadius = 46;
@@ -554,6 +589,10 @@
             this.btnSelect.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnSelect.TextMarginLeft = 0;
             this.btnSelect.TextPadding = new System.Windows.Forms.Padding(0);
+            this.tooltip.SetToolTip(this.btnSelect, "Press this button to select the Root Folder. \r\nNote: Root folder will have two fo" +
+        "lders:\r\n- SteamCMD folder\r\n- Palworld Server Folder");
+            this.tooltip.SetToolTipIcon(this.btnSelect, null);
+            this.tooltip.SetToolTipTitle(this.btnSelect, "Select Button");
             this.btnSelect.UseDefaultRadiusAndThickness = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
@@ -587,7 +626,7 @@
             this.tbFolder.IconRight = null;
             this.tbFolder.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.tbFolder.Lines = new string[0];
-            this.tbFolder.Location = new System.Drawing.Point(12, 90);
+            this.tbFolder.Location = new System.Drawing.Point(16, 37);
             this.tbFolder.MaxLength = 32767;
             this.tbFolder.MinimumSize = new System.Drawing.Size(1, 1);
             this.tbFolder.Modified = false;
@@ -631,21 +670,79 @@
             this.tbFolder.TextMarginLeft = 3;
             this.tbFolder.TextMarginTop = 1;
             this.tbFolder.TextPlaceholder = "";
+            this.tooltip.SetToolTip(this.tbFolder, "");
+            this.tooltip.SetToolTipIcon(this.tbFolder, null);
+            this.tooltip.SetToolTipTitle(this.tbFolder, "");
             this.tbFolder.UseSystemPasswordChar = false;
             this.tbFolder.WordWrap = true;
+            // 
+            // tooltip
+            // 
+            this.tooltip.Active = true;
+            this.tooltip.AlignTextWithTitle = false;
+            this.tooltip.AllowAutoClose = false;
+            this.tooltip.AllowFading = true;
+            this.tooltip.AutoCloseDuration = 5000;
+            this.tooltip.BackColor = System.Drawing.SystemColors.Control;
+            this.tooltip.BorderColor = System.Drawing.Color.Gainsboro;
+            this.tooltip.ClickToShowDisplayControl = false;
+            this.tooltip.ConvertNewlinesToBreakTags = true;
+            this.tooltip.DisplayControl = null;
+            this.tooltip.EntryAnimationSpeed = 350;
+            this.tooltip.ExitAnimationSpeed = 200;
+            this.tooltip.GenerateAutoCloseDuration = false;
+            this.tooltip.IconMargin = 6;
+            this.tooltip.InitialDelay = 0;
+            this.tooltip.Name = "tooltip";
+            this.tooltip.Opacity = 1D;
+            this.tooltip.OverrideToolTipTitles = false;
+            this.tooltip.Padding = new System.Windows.Forms.Padding(10);
+            this.tooltip.ReshowDelay = 100;
+            this.tooltip.ShowAlways = true;
+            this.tooltip.ShowBorders = false;
+            this.tooltip.ShowIcons = true;
+            this.tooltip.ShowShadows = true;
+            this.tooltip.Tag = null;
+            this.tooltip.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.tooltip.TextForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tooltip.TextMargin = 2;
+            this.tooltip.TitleFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.tooltip.TitleForeColor = System.Drawing.Color.Black;
+            this.tooltip.ToolTipPosition = new System.Drawing.Point(0, 0);
+            this.tooltip.ToolTipTitle = null;
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnlMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlMain.BackgroundImage")));
+            this.pnlMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlMain.BorderColor = System.Drawing.Color.Transparent;
+            this.pnlMain.BorderRadius = 3;
+            this.pnlMain.BorderThickness = 1;
+            this.pnlMain.Controls.Add(this.btnInstall);
+            this.pnlMain.Controls.Add(this.tbLogs);
+            this.pnlMain.Controls.Add(this.btnStart);
+            this.pnlMain.Controls.Add(this.lblStatus);
+            this.pnlMain.Controls.Add(this.lblFolderLoc);
+            this.pnlMain.Controls.Add(this.btnSelect);
+            this.pnlMain.Controls.Add(this.tbFolder);
+            this.pnlMain.Enabled = false;
+            this.pnlMain.Location = new System.Drawing.Point(0, 56);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.ShowBorders = true;
+            this.pnlMain.Size = new System.Drawing.Size(800, 389);
+            this.pnlMain.TabIndex = 6;
+            this.tooltip.SetToolTip(this.pnlMain, "");
+            this.tooltip.SetToolTipIcon(this.pnlMain, null);
+            this.tooltip.SetToolTipTitle(this.pnlMain, "");
+            this.pnlMain.Visible = false;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tbLogs);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.lblFolderLoc);
-            this.Controls.Add(this.btnInstall);
-            this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.btnSelect);
-            this.Controls.Add(this.tbFolder);
+            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -655,8 +752,9 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -674,6 +772,8 @@
         private Bunifu.UI.WinForms.BunifuLabel lblStatus;
         private Bunifu.UI.WinForms.BunifuTextBox tbLogs;
         private Bunifu.UI.WinForms.BunifuImageButton btnMinimize;
+        private Bunifu.UI.WinForms.BunifuToolTip tooltip;
+        private Bunifu.UI.WinForms.BunifuPanel pnlMain;
     }
 }
 

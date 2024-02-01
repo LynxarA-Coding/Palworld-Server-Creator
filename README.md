@@ -17,6 +17,12 @@
 ## It installs SteamCMD - What is it? 🛠️
 SteamCMD is a command-line tool developed by Valve (those who made Steam) that allows users to install and update various apps, including game servers like Palworld. The Palworld Server Creator App utilizes SteamCMD under the hood to simplify the server setup process.
 
+## 🔒 Security
+Triage (malware sandbox) test showed the following results: [link](https://tria.ge/240201-k6bs4aagdq/behavioral1) <br>
+The score is up because of my Update check from Github. Instead of checking release tags it checks the text in version.txt that is not the most optimal option. <br>
+Why I didn't use the option that is not suspicious? The reason is simple. To check tags, Github API needs authentication with a key that I don't want to include in the repo (not secured key can be abused) **Main.cs Lines 107-134**  <br>
+If someone has an idea how can I implement the version check safer without hosting my own API, please open an issue ticket or pull request
+
 ## 🛠️ Updates and Maintenance 
 v1.0.0:
 To update the Palworld server, you need to save the `Pal\Saved` folder

@@ -3,7 +3,7 @@
 
 ![img](https://i.imgur.com/XHYB2em.png)
 
-*Image is from 1.0.0, not updated due to the UI difference only in the Header (app name + version) text*
+*Image is from 1.0.0, not updated due to the UI difference only in the Header (app name + version) text. If any significant changes to the UI are made, the image will change*
 
 ## 🚀 Quick Start 
 - Download the latest release from the Releases page: [here](https://github.com/LynxarA-Coding/PalworldServerCreator/releases/latest)
